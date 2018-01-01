@@ -21,7 +21,7 @@ def match(lvlindexM):# Please note there are some extra features I hope not to c
 # input: paragraph, dict of blanks, annswerinput. Process: boolean, search and looping. output: print feedback and boolean
     counter_down=2
     end_counter=0
-    # counterIndex=1
+    counterIndex=1
     blankIndex=0
     para_lvl= paragraph[lvlindexM]
     while blankIndex<len(answers[lvlindexM]):
@@ -33,25 +33,25 @@ def match(lvlindexM):# Please note there are some extra features I hope not to c
             answerindex+=1
             for blank, ans in dictlocal.iteritems():
                 print "correct>>>>  " + str(para_lvl.replace(blank, ans))
-            # result= True #this is extra
+            result= True #this is extra
         else: 
-            print "[[incorrect.. you got one more try "# + str(counter_down-counterIndex) + "   try]]"
-            # result= False
+            print "[[incorrect.. you got " + str(counter_down-counterIndex) + "   tries]]"
+            result= False
             counter_down-=1
             if counter_down==end_counter:#this is extra
                 quit("bye bye!") #this is extra
             
-    # return result #this is extra
+    return result #this is extra
 
 def main (match):#goal is to control the game. input: functions [get lvl, match]. output: direct the calls of functions
     lvlindexM=get_levl()
     matchM= match(lvlindexM)
-    # if matchM:#= True: #all extra
-    #     print " you won!"
-    #     reentery= raw_input("[[do you want to play again(Y/N)?]]").lower()
-    #     if reentery=="y":
-    #         main(match)
-    #     else:
-    #         quit("bye bye!")
+    if matchM:#= True: #all extra
+        print " you won!"
+        reentery= raw_input("[[do you want to play again(Y/N)?]]").lower()
+        if reentery=="y":
+            main(match)
+        else:
+            quit("bye bye!")
 
 main(match)
